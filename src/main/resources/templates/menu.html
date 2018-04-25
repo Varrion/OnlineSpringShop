@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>EMT Lab 2 Spring Menu </title>
+</head>
+<body>
+
+<ul>
+    <li th:each="category:${categories}">
+        <a th:href="@{/emt/lab/menu/{id} (id=${category.getId() })}" th:text="${category.getName()}"></a>
+    </li>
+</ul>
+
+<ul>
+    <li th:each="product:${products}">
+        <a th:if="${product.getStock()}" th:href="@{/emt/lab/menu/{id}/{name} (id=${product.getCategory()}, name=${product.getName()})}" th:text="${product.getName()}"></a>
+    </li>
+
+</ul>
+
+
+</body>
+</html>
