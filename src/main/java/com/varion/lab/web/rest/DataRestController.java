@@ -39,7 +39,6 @@ public class DataRestController {
 
     @PostMapping("/product")
     public Product saveProduct(@RequestBody Product product){
-
         return this.productService.saveProduct(product);
     }
 }

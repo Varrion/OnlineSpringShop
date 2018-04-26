@@ -1,5 +1,6 @@
 package com.varion.lab.service.impl;
 
+import com.varion.lab.model.Category;
 import com.varion.lab.model.Product;
 import com.varion.lab.repository.ProductRepository;
 import com.varion.lab.service.ProductService;
@@ -30,5 +31,10 @@ public class ProductServieImpl implements ProductService {
     public Product findProductrById( Long id){
 
         return this.productRepository.getOne(id);
+    }
+
+    @Override
+    public Product findProductByCategory(Category category){
+        return this.productRepository.getOne(category.getId());
     }
 }

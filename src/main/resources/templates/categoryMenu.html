@@ -13,5 +13,11 @@
 <label>Category Name:</label>
 <p th:text="${category.getName()}"></p>
 
+<ul>
+    <li th:each="product: ${products}">
+        <a th:href="@{/emt/lab/menu/product/{id} (id=${product.getId()})}" th:if="${category.getId() == product.getCategory().getId()}" th:text="${product.getName()}"></a>
+    </li>
+
+</ul>
 </body>
 </html>

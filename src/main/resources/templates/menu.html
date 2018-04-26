@@ -5,19 +5,25 @@
     <title>EMT Lab 2 Spring Menu </title>
 </head>
 <body>
+<div th:class="row">
+    <div th:class="col-lg-6">
+        <h3>Categories:</h3>
+        <ul style="list-style-type: none">
+            <li th:each="category:${categories}">
+                <a th:href="@{/emt/lab/menu/{id} (id=${category.getId() })}" th:text="${category.getName()}"></a>
+            </li>
+        </ul>
+    </div>
+    <div th:class="col-lg-6">
+      <h3>Products on Stock</h3>
+        <ul style="list-style-type: none">
+            <li th:each="product:${products}">
+                <a th:if="${product.getStock()}" th:href="@{/emt/lab/menu/product/{id} (id=${product.getId()})}" th:text="${product.getName()}"></a>
+            </li>
+        </ul>
+    </div>
+</div>
 
-<ul>
-    <li th:each="category:${categories}">
-        <a th:href="@{/emt/lab/menu/{id} (id=${category.getId() })}" th:text="${category.getName()}"></a>
-    </li>
-</ul>
-
-<ul>
-    <li th:each="product:${products}">
-        <a th:if="${product.getStock()}" th:href="@{/emt/lab/menu/{id}/{name} (id=${product.getCategory()}, name=${product.getName()})}" th:text="${product.getName()}"></a>
-    </li>
-
-</ul>
 
 
 </body>
