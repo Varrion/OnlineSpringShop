@@ -7,9 +7,14 @@ import com.varion.lab.service.CategoryService;
 import com.varion.lab.service.ManufacturerService;
 import com.varion.lab.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.Map;
 
 @RestController
@@ -40,5 +45,16 @@ public class DataRestController {
     @PostMapping("/product")
     public Product saveProduct(@RequestBody Product product){
         return this.productService.saveProduct(product);
+    }
+
+
+    @RequestMapping(value = "product/image/{product_id}", produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<byte[]> getImage(@PathVariable("product_id") Long productId) throws IOException {
+
+        Product product = productService.findProductrById(productId);
+        byte[] imageContent = product.getPhotoData();
+        final HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_JPEG);
+        return new ResponseEntity<byte[]>(imageContent, headers, HttpStatus.OK);
     }
 }

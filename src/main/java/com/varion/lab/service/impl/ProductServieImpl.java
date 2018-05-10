@@ -6,7 +6,9 @@ import com.varion.lab.repository.ProductRepository;
 import com.varion.lab.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -36,5 +38,15 @@ public class ProductServieImpl implements ProductService {
     @Override
     public Product findProductByCategory(Category category){
         return this.productRepository.getOne(category.getId());
+    }
+
+    @Override
+    public void saveFile(Product product, MultipartFile file) {
+        try {
+            product.setPhotoData(file.getBytes());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        this.saveProduct(product);
     }
 }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Category Menu</title>
-    <link href="resources/css/bootstrap-3.3.2-dist/bootstrap.min.css" rel="stylesheet" />
+    <link th:href="@{static/assets/vendor/bootstrap/bootstrap.min.css} " rel="stylesheet">
 </head>
 <body>
 <h2 style="text-align: center">Category <b th:text="${category.getName()}"></b></h2>
@@ -18,8 +18,5 @@
         <a th:href="@{/emt/lab/menu/product/{id} (id=${product.getId()})}"  th:text="${product.getName()}"></a>
     </li>
 </ul>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="resources/js/bootstrap-3.3.2-dist/bootstrap.min.js"></script>
 </body>
 </html>

@@ -23,6 +23,11 @@ public class ManufacturerServiceImpl implements ManufacturerService {
         return this.manufacturerRepository.save(manufacturer);
     }
 
+    @Override
+    public List<Manufacturer> findAllManufacturers() {
+        return this.manufacturerRepository.findAll();
+    }
+
   /*  @Override
     public Manufacturer findManufacturerById (Long id){
 

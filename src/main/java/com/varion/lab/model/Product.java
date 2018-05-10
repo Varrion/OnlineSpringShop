@@ -25,6 +25,29 @@ public class Product {
     @JoinColumn( referencedColumnName = "id")
     private Manufacturer manufacturer;
 
+    @Lob
+    private byte[] photoData;
+
+    public void setPhotourl(String photourl) {
+        this.photourl = photourl;
+    }
+
+    public boolean isStock() {
+        return stock;
+    }
+
+    public void setStock(boolean stock) {
+        this.stock = stock;
+    }
+
+    public byte[] getPhotoData() {
+        return photoData;
+    }
+
+    public void setPhotoData(byte[] photoData) {
+        this.photoData = photoData;
+    }
+
     public Long getId() {
         return id;
     }
